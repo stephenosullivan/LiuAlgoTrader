@@ -101,7 +101,7 @@ class PolygonData(DataAPI):
                 "count",
             ],
         )
-        df["vwap"] = np.NaN
+        df["vwap"] = np.nan
         return df
 
     def get_symbols_data(

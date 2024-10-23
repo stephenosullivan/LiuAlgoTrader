@@ -97,18 +97,19 @@ if app == "analyzer":
             end_date = end_date.replace(hour=16, minute=00)
             symbol_data = minute_history[symbol][start_date:end_date]
             try:
-                start_index = symbol_data.close.index.get_loc(
-                    start_date, method="nearest"
-                )
-                end_index = symbol_data.close.index.get_loc(
-                    end_date, method="nearest"
-                )
+                # start_index = symbol_data.close.index.get_indexer(
+                #     start_date, method="nearest"
+                # )
+                # end_index = symbol_data.close.index.get_indexer(
+                #     end_date, method="nearest"
+                # )
+                start_index,end_index = symbol_data.close.index.get_indexer([start_date,end_date], method="nearest")
             except Exception as e:
                 traceback.print_exc()
                 print(f"Error for {symbol}: {e}")
                 continue
 
-            open_price = symbol_data.close[start_index]
+            open_price = symbol_data.close.iloc[start_index]
 
             fig, ax = plt.subplots()
             ax.plot(

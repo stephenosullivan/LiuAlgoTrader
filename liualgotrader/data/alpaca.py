@@ -330,7 +330,7 @@ class AlpacaData(DataAPI):
         data = data.tz_convert("America/New_York")
         data["average"] = data.vwap
         data["count"] = data.trade_count
-        data["vwap"] = np.NaN
+        data["vwap"] = np.nan
         grouped = data.groupby(data.symbol)
         for symbol in data.symbol.unique():
             dfs[symbol] = grouped.get_group(symbol)[
@@ -410,7 +410,7 @@ class AlpacaData(DataAPI):
         data.index = data.index.tz_convert("America/New_York")
         data["average"] = data.vwap
         data["count"] = data.trade_count
-        data["vwap"] = np.NaN
+        data["vwap"] = np.nan
 
         return data[
             [
